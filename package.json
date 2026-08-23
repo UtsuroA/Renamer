@@ -1,0 +1,44 @@
+{
+  "name": "batch-renamer-portable",
+  "version": "1.0.0",
+  "description": "Standalone portable batch renamer based on the uTools rename plugin",
+  "main": "main.js",
+  "scripts": {
+    "build": "electron-builder --win portable"
+  },
+  "dependencies": {
+    "exifr": "^7.1.3",
+    "ffprobe-static": "^3.1.0",
+    "image-size": "^2.0.2"
+  },
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.aoineng.batchrenamer",
+    "productName": "批量重命名",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist/**"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "批量重命名-便携版.exe"
+    },
+    "portable": {
+      "splash": false
+    }
+  }
+}
