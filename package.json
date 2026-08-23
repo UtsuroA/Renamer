@@ -37,8 +37,6 @@
       ],
       "artifactName": "批量重命名-便携版.exe"
     },
-    "portable": {
-      "splash": false
-    }
+    "portable": {}
   }
 }
