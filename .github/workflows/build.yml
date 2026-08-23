@@ -2,8 +2,6 @@ name: Build Windows portable EXE
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
 
 jobs:
   build:
@@ -18,16 +16,23 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      - name: Check files
+        run: |
+          dir
+          type package.json
 
-      - name: Build
+      - name: Install dependencies
+        run: npm install --verbose
+
+      - name: Build EXE
         run: npm run build
+
+      - name: Show dist
+        run: |
+          dir dist
 
       - name: Upload EXE
         uses: actions/upload-artifact@v4
         with:
           name: BatchRenamer-Portable
-          path: |
-            dist/**/*.exe
-            release/**/*.exe
+          path: dist/**/*.exe
